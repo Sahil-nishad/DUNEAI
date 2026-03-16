@@ -1,0 +1,71 @@
+<!--
+  ╔══════════════════════════════════════════════════════════╗
+  ║  PATCH — ContactModal cmSubmitForm() function ONLY       ║
+  ║                                                          ║
+  ║  Replace ONLY the cmSubmitForm() function in your        ║
+  ║  existing ContactModal script with this version.         ║
+  ║  This wires the form to your real backend API.           ║
+  ╚══════════════════════════════════════════════════════════╝
+
+  In your ContactModal <script>, find:
+
+      function cmSubmitForm() { ... }
+
+  Replace the entire function with the one below.
+  Also make sure api.js is loaded BEFORE ContactModal in your HTML.
+-->
+
+<script>
+/* ── Real API submit (replaces the setTimeout mock) ── */
+async function cmSubmitForm() {
+  if (!cmValidate(3)) return;
+
+  const btn = document.getElementById('cm-submit-btn');
+  document.getElementById('cm-submit-label').style.display = 'none';
+  document.getElementById('cm-submit-loader').style.display = 'flex';
+  btn.disabled = true;
+
+  // Collect all form data
+  const formData = {
+    name:      document.getElementById('f-name').value.trim(),
+    email:     document.getElementById('f-email').value.trim(),
+    company:   document.getElementById('f-company').value.trim(),
+    role:      document.getElementById('f-role').value.trim(),
+    heard:     document.getElementById('f-heard').value,
+    service:   document.querySelector('.cm-service-chip.selected')?.dataset.val || '',
+    budget:    document.getElementById('f-budget').value,
+    timeline:  document.getElementById('f-timeline').value,
+    desc:      document.getElementById('f-desc').value.trim(),
+    data:      document.getElementById('f-data').value,
+    whatsapp:  document.getElementById('f-whatsapp').value.trim(),
+  };
+
+  try {
+    const result = await duneSubmitContact(formData);
+
+    if (result.success) {
+      cmShowSuccess();
+    } else {
+      // Show error message from server
+      cmToast(result.message || 'Something went wrong. Try again.');
+      btn.disabled = false;
+      document.getElementById('cm-submit-label').style.display = '';
+      document.getElementById('cm-submit-loader').style.display = 'none';
+    }
+  } catch (err) {
+    // Network error fallback
+    cmToast('Network error. Please email hello@duneai.in directly.');
+    btn.disabled = false;
+    document.getElementById('cm-submit-label').style.display = '';
+    document.getElementById('cm-submit-loader').style.display = 'none';
+  }
+}
+
+function cmShowSuccess() {
+  const firstName = document.getElementById('f-name').value.trim().split(' ')[0] || 'explorer';
+  document.getElementById('cm-success-name').textContent = firstName;
+  document.getElementById('cm-steps').style.display = 'none';
+  document.querySelectorAll('.cm-form-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-success').classList.add('active');
+}
+</script>

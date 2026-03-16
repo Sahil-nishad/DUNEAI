@@ -1,0 +1,110 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: CTA Section
+     File: components/CTA.html
+═══════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="section-inner">
+    <div class="section-tag reveal" style="justify-content:center;">Start Building</div>
+    <h2 class="cta-h2 reveal reveal-delay-1">
+      Ready To Build<br>Your <span class="cta-gold">AI Advantage?</span>
+    </h2>
+    <p class="cta-sub reveal reveal-delay-2">
+      Let's architect your competitive moat together. One conversation, a roadmap to your AI future.
+    </p>
+    <div class="cta-btns reveal reveal-delay-3">
+      <a href="mailto:hello@duneai.io" class="btn-primary">Dune With Us</a>
+    </div>
+
+    <!-- Trust signals -->
+    <div class="cta-trust reveal reveal-delay-4">
+      <div class="trust-item">
+        <span class="trust-icon">⚡</span>
+        <span>Response within 24hrs</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-icon">🔒</span>
+        <span>NDA on request</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-icon">🌍</span>
+        <span>Remote-first, global clients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#cta {
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+#cta .section-inner { text-align: center; }
+
+.cta-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(201,168,106,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-h2 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.cta-gold { color: var(--gold); }
+
+.cta-sub {
+  color: var(--grey);
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+/* Trust signals */
+.cta-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.trust-icon { font-size: 0.9rem; }
+.trust-divider {
+  width: 1px; height: 20px;
+  background: var(--border);
+}
+
+@media (max-width: 480px) {
+  .trust-divider { display: none; }
+}
+</style>

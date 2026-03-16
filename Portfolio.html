@@ -1,0 +1,252 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: Products Section
+     File: components/Portfolio.html
+═══════════════════════════════════════ -->
+<section id="products">
+  <div class="section-inner">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-tag reveal">Products</div>
+        <h2 class="section-h2 reveal reveal-delay-1">Products We've<br>Shipped</h2>
+      </div>
+      <div class="filter-tabs reveal reveal-delay-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="agent">AI Agents</button>
+        <button class="filter-btn" data-filter="ml">ML Models</button>
+        <button class="filter-btn" data-filter="saas">SaaS Tools</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid" id="portfolio-grid">
+
+      <div class="portfolio-card reveal" data-category="agent">
+        <div class="pc-top">
+          <span class="pc-tag tag-agent">AI Agent</span>
+          <span class="pc-num">01</span>
+        </div>
+        <span class="pc-icon">🏥</span>
+        <div class="pc-name">Hospital Appointment Agent</div>
+        <p class="pc-desc">Autonomous AI agent managing patient scheduling, reminders, cancellations, and doctor availability in real-time via voice + chat.</p>
+        <a href="#" class="pc-cta">View Case Study &#x2192;</a>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-1" data-category="saas">
+        <div class="pc-top">
+          <span class="pc-tag tag-saas">SaaS Tool</span>
+          <span class="pc-num">02</span>
+        </div>
+        <span class="pc-icon">🧩</span>
+        <div class="pc-name">Company Brain</div>
+        <p class="pc-desc">Internal knowledge search assistant with RAG, document ingestion, permission-aware retrieval, and Google Drive connector for enterprise teams.</p>
+        <a href="#" class="pc-cta">View Case Study &#x2192;</a>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-2" data-category="saas">
+        <div class="pc-top">
+          <span class="pc-tag tag-saas">SaaS Tool</span>
+          <span class="pc-num">03</span>
+        </div>
+        <span class="pc-icon">📊</span>
+        <div class="pc-name">AI Billing Dashboard</div>
+        <p class="pc-desc">Intelligent billing SaaS that auto-generates invoices, detects anomalies, forecasts revenue, and flags churn risk using ML models.</p>
+        <a href="#" class="pc-cta">View Case Study &#x2192;</a>
+      </div>
+
+      <div class="portfolio-card reveal" data-category="ml">
+        <div class="pc-top">
+          <span class="pc-tag tag-ml">ML Model</span>
+          <span class="pc-num">04</span>
+        </div>
+        <span class="pc-icon">📈</span>
+        <div class="pc-name">Stock Prediction ML Model</div>
+        <p class="pc-desc">LSTM + Transformer hybrid model trained on NSE/BSE data delivering next-day price signals, sentiment fusion, and F&O strategy scoring.</p>
+        <a href="#" class="pc-cta">View Case Study &#x2192;</a>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-1" data-category="agent">
+        <div class="pc-top">
+          <span class="pc-tag tag-agent">AI Agent</span>
+          <span class="pc-num">05</span>
+        </div>
+        <span class="pc-icon">💬</span>
+        <div class="pc-name">Conversational WhatsApp AI</div>
+        <p class="pc-desc">Multi-turn conversational agent on WhatsApp Business API with memory, tool use, order tracking, and escalation routing to human support.</p>
+        <a href="#" class="pc-cta">View Case Study &#x2192;</a>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-2" data-category="agent">
+        <div class="pc-top">
+          <span class="pc-tag tag-agent">AI Agent</span>
+          <span class="pc-num">06</span>
+        </div>
+        <span class="pc-icon">⚙️</span>
+        <div class="pc-name">Client Automation System</div>
+        <p class="pc-desc">End-to-end workflow automation replacing 200+ hrs/month of manual ops — from lead capture to proposal generation to client onboarding.</p>
+        <a href="#" class="pc-cta">View Case Study &#x2192;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+#products { background: var(--black); }
+
+.portfolio-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--grey);
+  padding: 0.5rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.filter-btn.active, .filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,106,0.07);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.3s, box-shadow 0.4s;
+  cursor: none;
+  display: flex;
+  flex-direction: column;
+}
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+.portfolio-card:hover {
+  border-color: rgba(201,168,106,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,168,106,0.1);
+}
+.portfolio-card:hover::before { transform: scaleX(1); }
+
+.pc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+.pc-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+.tag-agent { background: rgba(91,231,255,0.1);  color: var(--blue);  border: 1px solid var(--border-blue); }
+.tag-ml    { background: rgba(201,168,106,0.1); color: var(--gold);  border: 1px solid var(--border); }
+.tag-saas  { background: rgba(200,100,255,0.08);color: #c87fff;      border: 1px solid rgba(200,100,255,0.2); }
+
+.pc-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(107,104,112,0.5);
+  letter-spacing: 0.1em;
+}
+.pc-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform 0.3s;
+}
+.portfolio-card:hover .pc-icon { transform: scale(1.1); }
+
+.pc-name {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.pc-desc {
+  color: var(--grey);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+.pc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 0;
+  transition: gap 0.3s;
+  text-decoration: none;
+  margin-top: auto;
+}
+.portfolio-card:hover .pc-cta { gap: 14px; }
+.portfolio-card.hidden { display: none; }
+
+@media (max-width: 768px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-header { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const filter = this.dataset.filter;
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.classList.remove('hidden');
+        card.style.animation = 'fade-up 0.4s ease both';
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>

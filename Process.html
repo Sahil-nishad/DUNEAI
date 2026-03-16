@@ -1,0 +1,169 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: Process Section
+     File: components/Process.html
+═══════════════════════════════════════ -->
+<section id="process">
+  <div class="section-inner">
+    <div class="process-layout">
+
+      <!-- Left: intro -->
+      <div class="process-intro">
+        <div class="section-tag reveal">How We Work</div>
+        <h2 class="section-h2 reveal reveal-delay-1">From Brief<br>To Production</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          A precise, battle-tested build process engineered for speed, quality, and long-term scale. No bloat. No wasted cycles.
+        </p>
+        <a href="#cta" class="btn-secondary reveal reveal-delay-3" style="display:inline-block;margin-top:2rem;">
+          Dune With Us &#x2192;
+        </a>
+      </div>
+
+      <!-- Right: timeline -->
+      <div class="process-timeline">
+
+        <div class="process-step">
+          <div class="ps-node gold-node">01</div>
+          <div class="ps-content">
+            <div class="ps-title">Understand Business</div>
+            <p class="ps-desc">Deep discovery session: business model, bottlenecks, data assets, and desired outcomes. We map the AI opportunity precisely before anything else.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="ps-node gold-node">02</div>
+          <div class="ps-content">
+            <div class="ps-title">Design AI System</div>
+            <p class="ps-desc">Architecture design, model selection, data flow diagrams, and UX wireframes. A full tech spec is delivered before a single line of code is written.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="ps-node gold-node">03</div>
+          <div class="ps-content">
+            <div class="ps-title">Build & Train</div>
+            <p class="ps-desc">Agile sprints with weekly demos. We build the backend, train and fine-tune models, integrate APIs, and stress-test against real-world edge cases.</p>
+          </div>
+        </div>
+
+        <div class="process-step" style="padding-bottom:0;">
+          <div class="ps-node blue-node">04</div>
+          <div class="ps-content">
+            <div class="ps-title">Deploy & Scale</div>
+            <p class="ps-desc">Production deployment, monitoring dashboards, performance tuning, and ongoing model drift management. We stay in the loop — always.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#process { background: var(--surface); }
+
+.process-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 27px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), var(--blue), transparent);
+  z-index: 0;
+}
+
+.process-step {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.process-step.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ps-node {
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--black);
+  position: relative;
+}
+.ps-node::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid;
+  opacity: 0.2;
+}
+.gold-node {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(201,168,106,0.2);
+}
+.gold-node::after { border-color: var(--gold); }
+
+.blue-node {
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 20px rgba(91,231,255,0.2);
+}
+.blue-node::after { border-color: var(--blue); }
+
+.ps-content { padding-top: 0.7rem; }
+.ps-title {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+.ps-desc {
+  color: var(--grey);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .process-layout { grid-template-columns: 1fr; gap: 3rem; }
+}
+</style>
+
+<script>
+const steps = document.querySelectorAll('.process-step');
+const stepsObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 200);
+    }
+  });
+}, { threshold: 0.2 });
+steps.forEach(s => stepsObs.observe(s));
+</script>

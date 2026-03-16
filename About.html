@@ -1,0 +1,206 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: About Section
+     File: components/About.html
+═══════════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <!-- Left: text content -->
+      <div class="about-text">
+        <div class="section-tag reveal">About DuneAI</div>
+        <h2 class="section-h2 reveal reveal-delay-1">Built In The Desert.<br>Shipped To The World.</h2>
+
+        <p class="reveal reveal-delay-2">
+          DuneAI is a next-generation AI micro-services lab focused on building intelligent infrastructure for modern businesses. Like the desert that inspired our name — we are vast, precise, and relentless.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Our mission is to democratize AI — making enterprise-grade intelligent systems accessible to startups, SMBs, and forward-thinking organizations that refuse to compete with yesterday's tools.
+        </p>
+        <p class="reveal reveal-delay-4">
+          <strong style="color:var(--gold-light);">Vision:</strong> A world where every business runs on AI-native infrastructure — not retrofitted automation, but intelligent systems designed from the ground up.
+        </p>
+
+        <!-- Stats -->
+        <div class="about-stats reveal">
+          <div class="stat-block">
+            <div class="stat-num">40<span class="stat-plus">+</span></div>
+            <div class="stat-label">AI Systems Built</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">12</div>
+            <div class="stat-label">Industries Served</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">99<span class="stat-plus">%</span></div>
+            <div class="stat-label">Client Retention</div>
+          </div>
+        </div>
+
+        <!-- Tech tags -->
+        <div class="about-tags reveal">
+          <span class="about-tag">LLM Engineering</span>
+          <span class="about-tag">RAG Systems</span>
+          <span class="about-tag">MLOps</span>
+          <span class="about-tag">Agent Frameworks</span>
+          <span class="about-tag">FastAPI</span>
+          <span class="about-tag">Next.js</span>
+          <span class="about-tag">Python</span>
+          <span class="about-tag">Vector DBs</span>
+        </div>
+      </div>
+
+      <!-- Right: animated orb visual -->
+      <div class="about-visual reveal">
+        <div class="about-orb-wrap">
+          <div class="orbit-ring ring-1"><div class="orbit-dot dot-gold"></div></div>
+          <div class="orbit-ring ring-2"><div class="orbit-dot dot-blue"></div></div>
+          <div class="orbit-ring ring-3"></div>
+          <div class="orb-center">
+            <div class="orb-text">DUNE<br>AI<br><span style="color:var(--blue);font-size:0.5rem;letter-spacing:0.3em;">SYSTEMS</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+#about { background: var(--black); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-text p {
+  color: var(--grey);
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+.stat-block {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.stat-num {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+.stat-plus {
+  font-size: 1.2rem;
+  color: var(--gold-dim);
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.about-tag {
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  text-transform: uppercase;
+  transition: color 0.3s, border-color 0.3s;
+}
+.about-tag:hover {
+  color: var(--gold);
+  border-color: var(--border);
+}
+
+/* Orb visual */
+.about-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-orb-wrap {
+  position: relative;
+  width: 340px; height: 340px;
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.ring-1 {
+  inset: 0;
+  border-color: rgba(201,168,106,0.2);
+  animation: spin-slow 20s linear infinite;
+}
+.ring-2 {
+  inset: 30px;
+  border-color: rgba(91,231,255,0.15);
+  animation: spin-slow 15s linear infinite reverse;
+}
+.ring-3 {
+  inset: 60px;
+  border-color: rgba(201,168,106,0.08);
+  animation: spin-slow 30s linear infinite;
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dot-gold { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.dot-blue { background: var(--blue); box-shadow: 0 0 12px var(--blue); }
+
+.orb-center {
+  position: absolute;
+  inset: 90px;
+  background: radial-gradient(circle, rgba(201,168,106,0.12) 0%, rgba(201,168,106,0.03) 50%, transparent 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+.orb-text {
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual { display: none; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+}
+</style>

@@ -1,0 +1,195 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: Hero Section
+     File: components/Hero.html
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-sand-glow"></div>
+  <div class="hero-blue-orb"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Next-Gen AI Micro-Services Lab</div>
+
+    <h1 class="hero-h1 glitch" data-text="The Platform Behind Adaptive&#xa;AI Software">
+      The Platform Behind <span class="line-gold">Adaptive</span><br>
+      AI Software
+    </h1>
+
+    <p class="hero-sub">
+      <span>AI Agents</span> &nbsp;•&nbsp;
+      ML Systems &nbsp;•&nbsp;
+      <span>Micro SaaS</span> &nbsp;•&nbsp;
+      Automation Infrastructure
+    </p>
+
+    <div class="hero-btns">
+      <a href="#cta" class="btn-primary">Dune With Us</a>
+      <a href="#products" class="btn-secondary">View Products</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<style>
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 5vw 100px;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-sand-glow {
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 500px;
+    background: radial-gradient(ellipse at center bottom, rgba(201, 168, 106, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-blue-orb {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(91, 231, 255, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    animation: float-orb 8s ease-in-out infinite;
+  }
+
+  .hero-content {
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    background: rgba(201, 168, 106, 0.05);
+    backdrop-filter: blur(8px);
+    animation: fade-up 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--blue);
+    animation: pulse-dot 1.5s infinite;
+  }
+
+  .hero-h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    animation: fade-up 0.8s ease 0.15s both;
+    position: relative;
+  }
+
+  .hero-h1 .line-gold {
+    color: var(--gold);
+  }
+
+  .hero-h1 .line-blue {
+    color: var(--blue);
+  }
+
+  /* Glitch */
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    white-space: pre-wrap;
+  }
+
+  .glitch:hover::before {
+    opacity: 0.8;
+    color: var(--blue);
+    animation: glitch1 0.3s steps(1) 2;
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  }
+
+  .glitch:hover::after {
+    opacity: 0.8;
+    color: var(--gold);
+    animation: glitch2 0.3s steps(1) 2 0.05s;
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--grey);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    margin-bottom: 3rem;
+    animation: fade-up 0.8s ease 0.3s both;
+  }
+
+  .hero-sub span {
+    color: var(--gold-light);
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fade-up 0.8s ease 0.45s both;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    text-transform: uppercase;
+    animation: fade-up 1s ease 1s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+</style>

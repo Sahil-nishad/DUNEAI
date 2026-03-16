@@ -1,0 +1,242 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: Services Section
+     File: components/Services.html
+     — Each service shown as a detailed card
+       (like products layout) with tech tags,
+       description, and category badge.
+═══════════════════════════════════════ -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag reveal">Our Services</div>
+    <h2 class="section-h2 reveal reveal-delay-1">Intelligence Built<br>For Scale</h2>
+    <p class="section-desc reveal reveal-delay-2">
+      We engineer AI-native solutions from the ground up — purpose-built for automation, intelligence, and growth.
+    </p>
+
+    <!-- Services Grid (card layout matching Products) -->
+    <div class="services-card-grid">
+
+      <!-- Card 1: AI Agents -->
+      <div class="svc-card reveal" data-svc="agent">
+        <div class="svc-card-top">
+          <span class="svc-badge badge-agent">AI Agent</span>
+          <span class="svc-num">01</span>
+        </div>
+        <span class="svc-icon">🤖</span>
+        <div class="svc-title">AI Agents Development</div>
+        <p class="svc-desc">
+          We build autonomous agents that reason, plan and act. From customer-facing bots to complex multi-agent orchestration systems that handle real business workflows end-to-end without human intervention.
+        </p>
+        <div class="svc-tech-row">
+          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">AutoGen</span>
+          <span class="tech-tag">OpenAI</span>
+          <span class="tech-tag">FastAPI</span>
+        </div>
+        <a href="#cta" class="svc-cta">Start a Project &#x2192;</a>
+      </div>
+
+      <!-- Card 2: Machine Learning -->
+      <div class="svc-card reveal reveal-delay-1" data-svc="ml">
+        <div class="svc-card-top">
+          <span class="svc-badge badge-ml">ML Solutions</span>
+          <span class="svc-num">02</span>
+        </div>
+        <span class="svc-icon">🧠</span>
+        <div class="svc-title">Machine Learning Solutions</div>
+        <p class="svc-desc">
+          Custom ML pipelines, predictive models, and fine-tuned LLMs trained on your domain data. From forecasting to classification to generative systems running at production scale with full MLOps.
+        </p>
+        <div class="svc-tech-row">
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">HuggingFace</span>
+          <span class="tech-tag">Scikit-learn</span>
+          <span class="tech-tag">MLflow</span>
+        </div>
+        <a href="#cta" class="svc-cta">Start a Project &#x2192;</a>
+      </div>
+
+      <!-- Card 3: SaaS Engineering -->
+      <div class="svc-card reveal reveal-delay-2" data-svc="saas">
+        <div class="svc-card-top">
+          <span class="svc-badge badge-saas">SaaS Product</span>
+          <span class="svc-num">03</span>
+        </div>
+        <span class="svc-icon">⚡</span>
+        <div class="svc-title">SaaS Product Engineering</div>
+        <p class="svc-desc">
+          End-to-end AI SaaS micro-products with clean architecture, API-first design, scalable infra, and beautiful interfaces. Built to ship fast and scale reliably from day one to thousands of users.
+        </p>
+        <div class="svc-tech-row">
+          <span class="tech-tag">Next.js</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Stripe</span>
+        </div>
+        <a href="#cta" class="svc-cta">Start a Project &#x2192;</a>
+      </div>
+
+      <!-- Card 4: Automation -->
+      <div class="svc-card reveal reveal-delay-3" data-svc="automation">
+        <div class="svc-card-top">
+          <span class="svc-badge badge-auto">Automation</span>
+          <span class="svc-num">04</span>
+        </div>
+        <span class="svc-icon">🔁</span>
+        <div class="svc-title">Business Automation Systems</div>
+        <p class="svc-desc">
+          Replace manual workflows with intelligent automation. Integrate AI into your existing stack — CRM, ERP, billing, communications, and operations for maximum efficiency and zero dropped tasks.
+        </p>
+        <div class="svc-tech-row">
+          <span class="tech-tag">n8n</span>
+          <span class="tech-tag">Zapier</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">REST APIs</span>
+        </div>
+        <a href="#cta" class="svc-cta">Start a Project &#x2192;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+#services { background: var(--surface); }
+
+/* Grid — matches products card grid */
+.services-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+/* Card — mirrors products card aesthetic */
+.svc-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.3s, box-shadow 0.4s;
+  cursor: none;
+  display: flex;
+  flex-direction: column;
+}
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+.svc-card:hover {
+  border-color: rgba(201,168,106,0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,106,0.1);
+}
+.svc-card:hover::before { transform: scaleX(1); }
+
+/* Top row */
+.svc-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+.svc-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(107,104,112,0.5);
+  letter-spacing: 0.1em;
+}
+
+/* Badges */
+.svc-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+.badge-agent { background: rgba(91,231,255,0.1);  color: var(--blue);   border: 1px solid var(--border-blue); }
+.badge-ml    { background: rgba(201,168,106,0.1); color: var(--gold);   border: 1px solid var(--border); }
+.badge-saas  { background: rgba(200,100,255,0.08);color: #c87fff;       border: 1px solid rgba(200,100,255,0.2); }
+.badge-auto  { background: rgba(100,255,150,0.08);color: #6ffa9a;       border: 1px solid rgba(100,255,150,0.2); }
+
+/* Icon */
+.svc-icon {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform 0.3s;
+}
+.svc-card:hover .svc-icon { transform: scale(1.1); }
+
+/* Title */
+.svc-title {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+/* Description */
+.svc-desc {
+  color: var(--grey);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+/* Tech tags */
+.svc-tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgba(107,104,112,0.8);
+  border: 1px solid rgba(107,104,112,0.2);
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s, border-color 0.3s;
+}
+.svc-card:hover .tech-tag {
+  color: var(--gold-dim);
+  border-color: rgba(201,168,106,0.25);
+}
+
+/* CTA link */
+.svc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: gap 0.3s;
+  margin-top: auto;
+}
+.svc-card:hover .svc-cta { gap: 14px; }
+
+@media (max-width: 768px) {
+  .services-card-grid { grid-template-columns: 1fr; }
+}
+</style>

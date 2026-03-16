@@ -1,0 +1,185 @@
+<!-- ═══════════════════════════════════════
+     COMPONENT: Footer
+     File: components/Footer.html
+═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <a href="#" class="nav-logo footer-logo">
+        <div class="logo-dot"></div>
+        <div>DUNE<span>AI</span></div>
+      </a>
+      <p>Next-generation AI micro-services lab. Building intelligent software from the future, one system at a time.</p>
+      <div class="footer-badge">
+        <span class="footer-badge-dot"></span>
+        Available for new projects
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">AI Agents</a>
+      <a href="#services">ML Solutions</a>
+      <a href="#services">SaaS Engineering</a>
+      <a href="#services">Automation</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#cta">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 DuneAI &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Built from the future</p>
+    <div class="social-icons">
+      <a href="#" title="Twitter/X" aria-label="Twitter">𝕏</a>
+      <a href="#" title="LinkedIn" aria-label="LinkedIn">in</a>
+      <a href="#" title="GitHub" aria-label="GitHub">⌥</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 5vw 3rem;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-logo {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.footer-logo span { color: var(--gold); }
+
+.footer-brand p {
+  color: var(--grey);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  max-width: 240px;
+  margin-bottom: 1.2rem;
+}
+
+.footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.footer-badge-dot {
+  width: 6px; height: 6px;
+  background: #6ffa9a;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #6ffa9a;
+  animation: pulse-dot 2s infinite;
+}
+
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.footer-col a {
+  display: block;
+  text-decoration: none;
+  color: var(--grey);
+  font-size: 0.88rem;
+  margin-bottom: 0.6rem;
+  transition: color 0.3s, transform 0.2s;
+}
+.footer-col a:hover {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom p {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: rgba(107,104,112,0.5);
+  text-transform: uppercase;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.75rem;
+}
+.social-icons a {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.social-icons a:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 15px rgba(91,231,255,0.2);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}
+</style>
