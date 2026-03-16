@@ -128,6 +128,18 @@ section { position: relative; z-index: 1; }
   box-shadow: 0 0 30px rgba(91,231,255,0.15);
 }
 
+@media (hover: none), (pointer: coarse) {
+  body,
+  body * {
+    cursor: auto !important;
+  }
+
+  #cursor,
+  #cursor-ring {
+    display: none !important;
+  }
+}
+
 /* ── Reveal animations ── */
 .reveal {
   opacity: 0;

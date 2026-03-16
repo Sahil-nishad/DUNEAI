@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────
-// DUNEAI — Portfolio & Services Data
+// DUNEAI — Products & Services Data
 // ─────────────────────────────────────────
 
 export const portfolioProjects = [

@@ -375,7 +375,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
     </ul>
@@ -387,7 +387,7 @@
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="#services" onclick="closeMobileMenu()">Services</a>
-    <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="#products" onclick="closeMobileMenu()">Products</a>
     <a href="#process" onclick="closeMobileMenu()">Process</a>
     <a href="#about" onclick="closeMobileMenu()">About</a>
     <a href="#cta" onclick="closeMobileMenu()" class="mobile-cta">Dune With Us</a>
@@ -411,7 +411,7 @@
       </p>
       <div class="hero-btns">
         <a href="#cta" class="btn-primary">Dune With Us</a>
-        <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+        <a href="#products" class="btn-secondary">View Products</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -548,13 +548,13 @@
   </section>
 
   <!-- ─────────────────────────────────────────
-       COMPONENT: Portfolio  (components/Portfolio.html)
+       COMPONENT: Products  (components/Portfolio.html)
   ───────────────────────────────────────── -->
-  <section id="portfolio">
+  <section id="products">
     <div class="section-inner">
       <div class="portfolio-header">
         <div>
-          <div class="section-tag reveal">Portfolio</div>
+          <div class="section-tag reveal">Products</div>
           <h2 class="section-h2 reveal reveal-delay-1">Products We've<br>Shipped</h2>
         </div>
         <div class="filter-tabs reveal reveal-delay-2">
@@ -745,8 +745,7 @@
       <p class="cta-sub reveal reveal-delay-2">Let's architect your competitive moat together. One conversation, a
         roadmap to your AI future.</p>
       <div class="cta-btns reveal reveal-delay-3">
-        <a href="mailto:hello@duneai.io" class="btn-primary">Book Strategy Call</a>
-        <a href="mailto:build@duneai.io" class="btn-secondary">Start Your Project</a>
+        <a href="mailto:hello@duneai.io" class="btn-primary">Dune With Us</a>
       </div>
       <div class="cta-trust reveal reveal-delay-4">
         <div class="trust-item"><span class="trust-icon">⚡</span><span>Response within 24hrs</span></div>
@@ -777,7 +776,7 @@
           Engineering</a><a href="#services">Automation</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#process">Process</a><a
+        <h4>Company</h4><a href="#products">Products</a><a href="#about">About</a><a href="#process">Process</a><a
           href="#cta">Contact</a>
       </div>
       <div class="footer-col">
@@ -876,6 +875,18 @@
       z-index: 99998;
       transform: translate(-50%, -50%);
       transition: width .3s, height .3s, border-color .3s;
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      body,
+      body * {
+        cursor: auto !important;
+      }
+
+      #cursor,
+      #cursor-ring {
+        display: none !important;
+      }
     }
 
     /* ── Neural Canvas (components/NeuralCanvas.html) ── */
@@ -1416,7 +1427,7 @@
     }
 
     /* ── Portfolio (components/Portfolio.html) ── */
-    #portfolio {
+    #products {
       background: var(--black);
     }
 
@@ -2147,13 +2158,20 @@
     // ── Cursor (components/Cursor.html) ──
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-    (function animateRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); })();
-    document.querySelectorAll('a,button,.portfolio-card,.service-card,.svc-card').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; ring.style.width = '60px'; ring.style.height = '60px'; ring.style.borderColor = 'rgba(91,231,255,.5)'; });
-      el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.width = '40px'; ring.style.height = '40px'; ring.style.borderColor = 'rgba(201,168,106,.5)'; });
-    });
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (hasFinePointer && cursor && ring) {
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+      (function animateRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); })();
+      document.querySelectorAll('a,button,.portfolio-card,.service-card,.svc-card').forEach(el => {
+        el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; ring.style.width = '60px'; ring.style.height = '60px'; ring.style.borderColor = 'rgba(91,231,255,.5)'; });
+        el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.width = '40px'; ring.style.height = '40px'; ring.style.borderColor = 'rgba(201,168,106,.5)'; });
+      });
+    } else {
+      cursor?.remove();
+      ring?.remove();
+    }
 
     // ── NeuralCanvas (components/NeuralCanvas.html) ──
     (function initCanvas() {
@@ -2192,7 +2210,7 @@
     const stepsObs = new IntersectionObserver(entries => entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 200); }), { threshold: .2 });
     document.querySelectorAll('.process-step').forEach(s => stepsObs.observe(s));
 
-    // ── Portfolio filter (components/Portfolio.html) ──
+    // ── Products filter (components/Portfolio.html) ──
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -2421,12 +2439,11 @@
         </div>
         <div class="cm-success-tag">Transmission Received</div>
         <h3 class="cm-success-title">
-          You're Now<br>
-          <span class="success-gold">Duning With Us.</span>
+          <span class="success-gold">You're Now Duning With Us</span>
         </h3>
         <p class="cm-success-msg">
-          The desert has received your signal, <strong id="success-name">explorer</strong>.<br>
-          Our intelligence systems are already processing your brief.
+          Thanks, <strong>DUNEAI</strong>. Your submission is complete.<br>
+          Redirecting you to the home page now.
         </p>
         <div class="cm-success-cards">
           <div class="cm-success-card">
@@ -2754,23 +2771,28 @@ async function submitForm() {
 }
 
 function showSuccess() {
-  const firstName = document.getElementById('f-name').value.trim().split(' ')[0] || 'explorer';
-  document.getElementById('success-name').textContent = firstName;
   document.getElementById('cm-steps').style.display = 'none';
   document.querySelectorAll('.cm-form-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-success').classList.add('active');
+  document.querySelector('.cm-right').scrollTop = 0;
 
-  // Automatically close to the landing page after seeing the success message
+  // Show success briefly, then return to the top of the landing page.
   setTimeout(() => {
     if (document.getElementById('contact-modal').classList.contains('open')) {
       closeContactModal();
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, 5000);
+  }, 4500);
 }
 
 /* ── Auto-wire ALL "Dune With Us" / CTA buttons ── */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('button, a').forEach(el => {
+    if (el.closest('#contact-modal')) return;
+
     const t = el.textContent.trim().toLowerCase();
     if (
       t.includes('dune with us') ||
