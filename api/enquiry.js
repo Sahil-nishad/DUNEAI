@@ -19,14 +19,24 @@ module.exports = async function handler(req, res) {
         ? 'Start Your Project'
         : 'General Enquiry';
 
-    await sendAdminEnquiry({ name, email, message, type, typeLabel });
-    await sendClientConfirmation(name, email);
+    try {
+      await sendAdminEnquiry({ name, email, message, type, typeLabel });
+    } catch (err) {
+      console.error('[enquiry.js] Admin enquiry error:', err.message);
+    }
+
+    try {
+      await sendClientConfirmation(name, email);
+    } catch (err) {
+      console.error('[enquiry.js] Client confirmation error:', err.message);
+    }
 
     return json(res, 200, {
       success: true,
       message: `Got it! We'll reach out to ${name.split(' ')[0]} within 24 hours.`,
     });
   } catch (error) {
+    console.error('[enquiry.js] Request error:', error.message);
     return json(res, 500, {
       success: false,
       message: error.message || 'Failed to send. Please email us directly at hello@duneai.in',

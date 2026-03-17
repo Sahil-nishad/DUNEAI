@@ -25,14 +25,24 @@ module.exports = async function handler(req, res) {
 
     const payload = { name, email, company, role, heard, service, budget, timeline, desc, data, whatsapp };
 
-    await sendAdminContact(payload);
-    await sendClientConfirmation(name, email);
+    try {
+      await sendAdminContact(payload);
+    } catch (err) {
+      console.error('[contact.js] Admin email error:', err.message);
+    }
+
+    try {
+      await sendClientConfirmation(name, email);
+    } catch (err) {
+      console.error('[contact.js] Client confirmation error:', err.message);
+    }
 
     return json(res, 200, {
       success: true,
       message: `Transmission received. We'll contact ${name.split(' ')[0]} within 24 hours.`,
     });
   } catch (error) {
+    console.error('[contact.js] Request error:', error.message);
     return json(res, 500, {
       success: false,
       message: error.message || 'Failed to send. Please email us directly at hello@duneai.in',
