@@ -26,3 +26,5 @@ services:
         sync: false
       - key: ALLOWED_ORIGINS
         sync: false
+      - key: ALLOW_VERCEL_PREVIEWS
+        value: "true"

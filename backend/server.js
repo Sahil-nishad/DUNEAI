@@ -34,17 +34,27 @@ const rawAllowedOrigins = process.env.ALLOWED_ORIGINS || process.env.ALLOWED_ORI
 const allowedOrigins = rawAllowedOrigins === '*'
   ? '*'
   : rawAllowedOrigins.split(',').map(o => o.trim()).filter(Boolean);
+const allowVercelPreviews = process.env.ALLOW_VERCEL_PREVIEWS === 'true';
+
+function isAllowedOrigin(origin) {
+  if (!origin) return true;
+  if (allowedOrigins === '*') return true;
+  if (allowedOrigins.includes(origin)) return true;
+  if (allowVercelPreviews && /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) return true;
+  return false;
+}
 
 app.use(cors({
   origin(origin, callback) {
     // Allow server-to-server calls or curl/postman without Origin header.
     if (!origin) return callback(null, true);
-    if (allowedOrigins === '*' || allowedOrigins.includes(origin)) return callback(null, true);
+    if (isAllowedOrigin(origin)) return callback(null, true);
     return callback(new Error(`CORS blocked for origin: ${origin}`));
   },
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }));
+app.options('*', cors());
 
 // Rate limiting — max 10 submissions per 15 minutes per IP
 const limiter = rateLimit({
