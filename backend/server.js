@@ -111,14 +111,26 @@ async function sendMail(options) {
 
 // ─────────────────────────────────────────
 // ROUTE: Health Check
-// GET /api/health
+// GET /, /health, /api/health
 // ─────────────────────────────────────────
-app.get('/api/health', (req, res) => {
-  res.json({
+function healthResponse() {
+  return {
     success: true,
     status:  'DuneAI backend is operational 🌑',
     time:    new Date().toISOString(),
-  });
+  };
+}
+
+app.get('/', (req, res) => {
+  res.json(healthResponse());
+});
+
+app.get('/health', (req, res) => {
+  res.json(healthResponse());
+});
+
+app.get('/api/health', (req, res) => {
+  res.json(healthResponse());
 });
 
 
